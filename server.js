@@ -10,12 +10,12 @@ hbs.registerPartials(__dirname + '/partials')
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public')); // register middleware
 
-app.use((req,res, next) => {
-  var log = `${req.method} ${req.url}`;
-  fs.appendFile('server.log', log + '\n');
-  //next();
-  res.render('maintenance.hbs');
-});
+// app.use((req,res, next) => {
+//   var log = `${req.method} ${req.url}`;
+//   fs.appendFile('server.log', log + '\n');
+//   //next();
+//   res.render('maintenance.hbs');
+// });
 
 hbs.registerHelper('getCurrYear', () => {
   return new Date().getFullYear();
@@ -35,6 +35,12 @@ res.render('home.hbs', {
 
 app.get('/about', (req, res) => {
   res.render('about.hbs', {
+    title: 'About'
+  });
+});
+
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
     title: 'About'
   });
 });
